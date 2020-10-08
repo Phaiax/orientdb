@@ -1035,6 +1035,11 @@ public class ODefaultSecuritySystem implements OSecuritySystem {
   }
 
   public void addUser(String user, String password, String permissions) {
+    String [] pars = new String[]{user, password};
+    context
+        .executeServerStatement("create system user ? identified by ? ", null, null, pars)
+        .close();
+    /*
     if (password == null) {
       // AUTO GENERATE PASSWORD
       final byte[] buffer = new byte[32];
@@ -1054,9 +1059,14 @@ public class ODefaultSecuritySystem implements OSecuritySystem {
 
     serverConfig.setUser(user, password, permissions);
     serverConfig.saveConfiguration();
+    */
   }
 
   public void dropUser(String iUserName) {
+    String [] pars = new String[]{iUserName};
+    context
+        .executeServerStatement("drop system user ?", null, null, pars)
+        .close();
     serverConfig.dropUser(iUserName);
     serverConfig.saveConfiguration();
   }
