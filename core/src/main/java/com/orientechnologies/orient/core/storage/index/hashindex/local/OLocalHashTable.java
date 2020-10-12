@@ -81,7 +81,7 @@ public class OLocalHashTable<K, V> extends ODurableComponent implements OHashTab
   private final String treeStateFileExtension;
 
   static final         int HASH_CODE_SIZE  = 64;
-  private static final int MAX_LEVEL_DEPTH = 8;
+  private static final int MAX_LEVEL_DEPTH = 5;
   static final         int MAX_LEVEL_SIZE  = 1 << MAX_LEVEL_DEPTH;
 
   private static final int LEVEL_MASK = Integer.MAX_VALUE >>> (31 - MAX_LEVEL_DEPTH);
